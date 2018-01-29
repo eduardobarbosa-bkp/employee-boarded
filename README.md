@@ -10,7 +10,7 @@ Employee Borded (Angular 4 application) - Eduardo Barbosa da Costa
 2. *ng build -prod*
 
 ##### On angular-cl
-3. *ng server*
+3. *ng serve*
 The endpoints will be available in: http://localhost:4200
 
 ##### On Docker
