@@ -1,0 +1,114 @@
+<div class="basic-container">
+    <div  class="form-wrapper-title-border form-wrapper-title">
+      <div class="form-wrapper-title-spacer">Funcionários</div>
+    </div>
+  <div class="employee-container mat-elevation-z8">
+
+    <div class="employee-header">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pesquisar por nome, função ou empresa ">
+      </mat-form-field>
+    </div>
+
+    <mat-table [dataSource]="dataSource" matSort matSortActive="name" matSortDirection="asc">
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
+        <mat-cell *matCellDef="let row" (click)="selectEmployee(row)"> {{row.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Função </mat-header-cell>
+        <mat-cell *matCellDef="let row" (click)="selectEmployee(row)"> {{row.role}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="company">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Empresa </mat-header-cell>
+        <mat-cell *matCellDef="let row" (click)="selectEmployee(row)"> {{row.company}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+          Ações
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-icon-button color="primary" focusable="false" (click)="delete(row.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedEmployee && selectedEmployee.id == row.id}" >
+      </mat-row>
+    </mat-table>
+    <mat-paginator [pageSize]="20"></mat-paginator>
+  </div>
+  <div class="employee-button-control"  flex>
+    <button mat-fab color="primary" (click)="add()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="save()">
+<mat-sidenav-container>
+  <mat-sidenav  #sidenav mode="over" class="menu-sidenav"
+                fixedInViewport="true" position="end" >
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <button type="button" mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon class="navbar-item">close</mat-icon>
+        </button>
+        <span class="navbar-spacer"></span>
+        <button type="submit" mat-icon-button >
+          <mat-icon class="navbar-item">save</mat-icon>
+        </button>
+      </mat-toolbar-row>
+      <mat-toolbar-row>
+        <span class="navbar-item">{{selectedEmployee?.name}}</span>
+       </mat-toolbar-row>
+    </mat-toolbar>
+
+      <div class="form-wrapper-content" >
+        <input type="hidden" formControlName="id" >
+        <mat-form-field>
+          <input matInput placeholder="Nome" formControlName="name" >
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Função" formControlName="role" >
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Empresa" formControlName="company" >
+        </mat-form-field>
+      </div>
+
+
+    <mat-list *ngIf="selectedEmployee?.id">
+      <div class="subheader-row">
+        <h3 mat-subheader>Escala</h3>
+        <span class="navbar-spacer"></span>
+        <button type="button" mat-mini-fab color="primary" (click)="addBoardingDate()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <mat-list-item *ngFor="let boardingDate of selectedEmployee?.boardingDates; let idx = index">
+        <mat-icon matListIcon>today</mat-icon>
+        <p matLine>
+          <span> {{boardingDate.start | date: 'dd/MM/yyyy'}} até  {{boardingDate.end | date: 'dd/MM/yyyy'}}</span>
+        </p>
+        <button type="button" mat-icon-button color="primary" (click)="deleteBoardingDate(idx)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+
+  </mat-sidenav>
+</mat-sidenav-container>
+</form>

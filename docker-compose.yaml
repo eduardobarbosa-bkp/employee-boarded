@@ -1,0 +1,8 @@
+version: "2"
+
+services:
+  app-frontend:
+    container_name: employee-borded
+    image: gcr.io/halliburton/employee-borded:v1
+    ports:
+      - "80:80"

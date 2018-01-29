@@ -1,0 +1,48 @@
+<div class="basic-container">
+  <div  class="form-wrapper-title-border form-wrapper-title">
+    <div class="form-wrapper-title-spacer">Escala</div>
+  </div>
+  <div class="schedule-container mat-elevation-z8">
+
+    <div class="schedule-header">
+      <mat-form-field>
+        <input matInput [matDatepicker]="pickerStart" [(ngModel)]="startDateFilter" (dateChange)="applyFilter()" placeholder="Início">
+        <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+        <mat-datepicker #pickerStart></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="pickerEnd" [(ngModel)]="endDateFilter" (dateChange)="applyFilter()" placeholder="Fim">
+        <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+        <mat-datepicker #pickerEnd></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <mat-table [dataSource]="dataSource" matSort >
+
+      <ng-container matColumnDef="employeeId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Employee ID </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.employeeId}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="employeeName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Funcionário </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.employeeName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="start">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Início </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.start | date: 'dd/MM/yyyy'}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="end">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Fim </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.end | date: 'dd/MM/yyyy'}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+    <mat-paginator [pageSize]="20"></mat-paginator>
+  </div>
+</div>

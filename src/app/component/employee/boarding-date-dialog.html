@@ -1,0 +1,26 @@
+<form [formGroup]="form" (ngSubmit)="saveBoardingDate()">
+  <input type="hidden" formControlName="employeeId" >
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span class="navbar-item">Escala - Novo Período</span>
+      <span class="navbar-spacer"></span>
+      <button type="submit" mat-icon-button >
+        <mat-icon class="navbar-item">save</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="boarding-date-dialog-container">
+    <mat-form-field>
+      <input matInput [matDatepicker]="pickerStart"  formControlName="start" placeholder="Início">
+      <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+      <mat-datepicker #pickerStart></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="pickerEnd" formControlName="end" placeholder="Fim">
+      <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+      <mat-datepicker #pickerEnd></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+</form>

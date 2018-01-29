@@ -1,0 +1,87 @@
+/* Structure */
+.employee-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+  position: relative;
+}
+
+.employee-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.employee-table {
+  overflow: auto;
+  min-height: 300px;
+}
+
+.employee-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+/* Column Widths */
+.mat-column-name {
+  max-width: 200px;
+}
+
+.mat-column-actions {
+  text-align: center;
+  max-width: 100px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.mat-row {
+  cursor: pointer;
+}
+
+.employee-button-control{
+  padding: 5px;
+  text-align: right;
+}
+
+.highlight{
+  background:  rgba(0,0,0,.03);
+}
+
+.navbar-spacer {
+  flex: 1 1 auto;
+}
+
+.navbar-item {
+  padding: 0 5px;
+}
+
+.menu-sidenav {
+  background: #FFFFFF;
+}
+
+
+.subheader-row{
+  display: flex;
+  padding-right: 16px;
+}
+
+.boarding-date-dialog-container{
+  padding:16px;
+}
+

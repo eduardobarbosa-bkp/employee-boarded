@@ -1,0 +1,12 @@
+.navbar-spacer {
+  flex: 1 1 auto;
+}
+
+.navbar-item {
+  padding: 0 5px;
+}
+
+.menu-sidenav {
+  background: #FFFFFF;
+}
+

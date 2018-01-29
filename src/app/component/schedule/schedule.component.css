@@ -1,0 +1,45 @@
+/* Structure */
+.schedule-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+  position: relative;
+}
+
+.schedule-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.schedule-table {
+  overflow: auto;
+  min-height: 300px;
+}
+
+.schedule-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Column Widths */
+.mat-column-start {
+  max-width: 150px;
+}
+
+.mat-column-end {
+  max-width: 150px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}

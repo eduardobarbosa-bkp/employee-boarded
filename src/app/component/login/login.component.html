@@ -1,0 +1,14 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<div class="login-container" >
+    <mat-form-field>
+      <input matInput placeholder="Usuário"  formControlName="username">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Senha" formControlName="password" [type]="hidePassword ? 'password' : 'text'">
+      <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+    </mat-form-field>
+    <button class="button" type="submit" mat-raised-button color="primary" >Entrar</button>
+</div>
+
+
+</form>
