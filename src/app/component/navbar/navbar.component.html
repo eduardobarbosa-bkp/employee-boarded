@@ -36,10 +36,10 @@
         </mat-toolbar-row>
       </mat-toolbar>
     <mat-nav-list>
-      <mat-list-item>
+      <mat-list-item *ngIf="userService.currentUser">
         <app-user-avatar matListAvatar ></app-user-avatar>
         <p matLine>
-          <span> {{userService.currentUser?.name}} </span>
+          <span> {{userService.currentUser.name}} </span>
         </p>
       </mat-list-item>
       <mat-list-item routerLink="/employee" (click)="sidenav.toggle()">
