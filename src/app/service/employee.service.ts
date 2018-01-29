@@ -24,7 +24,7 @@ export class EmployeeService {
         ]
       },
       {
-        id:this.generateUUID(),  name: 'Ana Luiza', role: 'Tester and Quality Assurance', company:'Halliburton',
+        id:this.generateUUID(),  name: 'Ana Luiza', role: 'Tester and Quality Assurance', company:'Petrobras',
         boardingDates:[
           {start:new Date(2018, 4, 1), end: new Date(2018, 4, 15)}
         ]

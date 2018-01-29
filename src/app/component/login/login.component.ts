@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   constructor(private fb: FormBuilder, public userService: UserService) {
-   var username = new FormControl("", Validators.required);
-   var password = new FormControl("", Validators.required);
+   var username = new FormControl("admin", Validators.required);
+   var password = new FormControl("admin", Validators.required);
     this.form = fb.group({
       "username": username,
       "password":password

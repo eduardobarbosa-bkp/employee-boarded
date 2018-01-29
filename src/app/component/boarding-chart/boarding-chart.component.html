@@ -1,6 +1,5 @@
 <div class="basic-container">
-
-<mat-card class="boarding-card">
+<mat-card *ngIf="lineChartData?.length > 0" >
   <mat-card-title>
       <span flex>Escala</span>
   </mat-card-title>
@@ -21,10 +20,12 @@
   </div>
 </mat-card>
 
+<div style="height:150px;" *ngIf="numberChartData?.length > 0" >
   <ngx-charts-number-card
-    [scheme]="blueScheme"
-    [results]="numberChartData">
+                        [scheme]="blueScheme"
+                        [results]="numberChartData">
   </ngx-charts-number-card>
-
+</div>
 
 </div>
+
