@@ -11,14 +11,14 @@
       <span flex>Escala</span>
   </mat-card-title>
   <mat-divider></mat-divider>
-  <div [style.height.px]="250">
+  <div style="height:250px;">
   <ngx-charts-bar-vertical
-    [scheme]="{ domain: [ '#4DD0E1', '#BA68C8', '#FF7043' ] }"
-    [results]="single"
+    [scheme]="blueScheme"
+    [results]="chartData"
     [gradient]="false"
     [xAxis]="true"
     [yAxis]="true"
-    [legend]="true"
+    [legend]="false"
     [showXAxisLabel]="true"
     [showYAxisLabel]="true"
     [xAxisLabel]="xAxisLabel"
