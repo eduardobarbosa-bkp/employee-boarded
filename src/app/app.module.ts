@@ -11,6 +11,7 @@ import {DialogsService} from './service/dialogs.service';
 import {MAT_DATE_LOCALE} from '@angular/material/core';
 import { MatPaginatorIntl} from '@angular/material';
 import { MatPaginatorIntlCustom } from './util/mat-paginator-intl-custom';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -115,6 +116,7 @@ import { BoardingChartComponent } from './component/boarding-chart/boarding-char
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    NgxChartsModule,
   ],
   entryComponents: [NavbarComponent, BoardingDateDialog, ConfirmDialogComponent, MessageDialogComponent],
   providers: [UserService, LoaderService, AuthGuardService, EmployeeService, DialogsService,

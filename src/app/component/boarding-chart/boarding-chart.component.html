@@ -1,3 +1,29 @@
-<p>
-  boarding-chart works!
-</p>
+<div class="basic-container">
+<!--
+<ngx-charts-number-card
+  [view]="view"
+  [scheme]="{ domain: [ '#4DD0E1', '#BA68C8', '#FF7043' ] }"
+  [results]="single">
+</ngx-charts-number-card>-->
+
+<mat-card class="boarding-card">
+  <mat-card-title>
+      <span flex>Escala</span>
+  </mat-card-title>
+  <mat-divider></mat-divider>
+  <div [style.height.px]="250">
+  <ngx-charts-bar-vertical
+    [scheme]="{ domain: [ '#4DD0E1', '#BA68C8', '#FF7043' ] }"
+    [results]="single"
+    [gradient]="false"
+    [xAxis]="true"
+    [yAxis]="true"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel">
+   </ngx-charts-bar-vertical>
+  </div>
+</mat-card>
+</div>
