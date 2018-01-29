@@ -6,15 +6,15 @@ metadata:
     kompose.version: 1.1.0 (36652f6)
   creationTimestamp: null
   labels:
-    io.kompose.service: employee-borded
-  name: employee-borded
+    io.kompose.service: employee-boarded
+  name: employee-boarded
 spec:
   ports:
   - name: "80"
     port: 80
     targetPort: 80
   selector:
-    io.kompose.service: employee-borded
+    io.kompose.service: employee-boarded
   type: LoadBalancer
 status:
   loadBalancer: {}
@@ -27,8 +27,8 @@ metadata:
     kompose.version: 1.1.0 (36652f6)
   creationTimestamp: null
   labels:
-    io.kompose.service: employee-borded
-  name: employee-borded
+    io.kompose.service: employee-boarded
+  name: employee-boarded
 spec:
   replicas: 1
   strategy: {}
@@ -36,11 +36,11 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: employee-borded
+        io.kompose.service: employee-boarded
     spec:
       containers:
-      - image: gcr.io/halliburton/employee-borded:v1
-        name: employee-borded
+      - image: gcr.io/halliburton/employee-boarded:v1
+        name: employee-boarded
         ports:
         - containerPort: 80
         resources: {}

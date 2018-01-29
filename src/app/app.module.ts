@@ -57,6 +57,7 @@ import { EmployeeComponent, BoardingDateDialog } from './component/employee/empl
 import { ScheduleComponent } from './component/schedule/schedule.component';
 import { ConfirmDialogComponent } from './component/confirm-dialog/confirm-dialog.component';
 import { MessageDialogComponent } from './component/message-dialog/message-dialog.component';
+import { BoardingChartComponent } from './component/boarding-chart/boarding-chart.component';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { MessageDialogComponent } from './component/message-dialog/message-dialo
     ScheduleComponent,
     BoardingDateDialog,
     ConfirmDialogComponent,
-    MessageDialogComponent
+    MessageDialogComponent,
+    BoardingChartComponent
   ],
   imports: [
     BrowserModule,

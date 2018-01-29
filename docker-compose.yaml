@@ -2,7 +2,7 @@ version: "2"
 
 services:
   app-frontend:
-    container_name: employee-borded
-    image: gcr.io/halliburton/employee-borded:v1
+    container_name: employee-boarded
+    image: gcr.io/halliburton/employee-boarded:v1
     ports:
       - "80:80"
