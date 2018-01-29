@@ -14,7 +14,7 @@ Employee Boarded (Angular 4 application) - Eduardo Barbosa da Costa
 The endpoints will be available in: http://localhost:4200
 
 ##### On Docker
-3. *docker build . -t gcr.io/hilliburton/employee-boarded:v1*
+3. *docker build . -t gcr.io/halliburton/employee-boarded:v1*
 4. *docker-compose up -d*
 5. *docker restart employee-boarded*
 The endpoints will be available in: http://&lt;docker host&gt;:80
