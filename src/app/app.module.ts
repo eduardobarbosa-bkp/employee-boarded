@@ -8,6 +8,7 @@ import { routing } from './app.routes';
 import {AuthGuardService} from './service/auth-guard.service';
 import {EmployeeService} from './service/employee.service';
 import {DialogsService} from './service/dialogs.service';
+import {ScheduleService} from './service/schedule.service';
 import {MAT_DATE_LOCALE} from '@angular/material/core';
 import { MatPaginatorIntl} from '@angular/material';
 import { MatPaginatorIntlCustom } from './util/mat-paginator-intl-custom';
@@ -119,7 +120,7 @@ import { BoardingChartComponent } from './component/boarding-chart/boarding-char
     NgxChartsModule,
   ],
   entryComponents: [NavbarComponent, BoardingDateDialog, ConfirmDialogComponent, MessageDialogComponent],
-  providers: [UserService, LoaderService, AuthGuardService, EmployeeService, DialogsService,
+  providers: [UserService, LoaderService, AuthGuardService, EmployeeService, DialogsService, ScheduleService,
     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
     {provide: MatPaginatorIntl, useClass: MatPaginatorIntlCustom}],
   bootstrap: [AppComponent]

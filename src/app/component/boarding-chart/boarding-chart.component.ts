@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ScheduleService} from '../../service/schedule.service';
 
 @Component({
   selector: 'app-boarding-chart',
@@ -26,7 +27,13 @@ export class BoardingChartComponent implements OnInit {
   xAxisLabel = 'Data';
   yAxisLabel = 'Funcionários';
 
-  constructor() { }
+  constructor(private scheduleService: ScheduleService) {
+
+    this.scheduleService.scheduleData.subscribe(data => {
+
+    });
+
+  }
 
   ngOnInit() {
   }
