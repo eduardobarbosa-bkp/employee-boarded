@@ -19,7 +19,7 @@ export class ScheduleService {
       value.forEach(employee => {
         employee.boardingDates.forEach(boardingDate => {
           result.push(new Object(
-            {employeeId: employee.id, employeeName: employee.name, start: boardingDate.start, end: boardingDate.end }
+            {employeeId: employee.id, employeeName: employee.name, companyName: employee.company, start: boardingDate.start, end: boardingDate.end }
           ));
         });
       });

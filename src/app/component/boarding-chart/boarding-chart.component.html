@@ -1,10 +1,4 @@
 <div class="basic-container">
-<!--
-<ngx-charts-number-card
-  [view]="view"
-  [scheme]="{ domain: [ '#4DD0E1', '#BA68C8', '#FF7043' ] }"
-  [results]="single">
-</ngx-charts-number-card>-->
 
 <mat-card class="boarding-card">
   <mat-card-title>
@@ -12,9 +6,9 @@
   </mat-card-title>
   <mat-divider></mat-divider>
   <div style="height:250px;">
-  <ngx-charts-bar-vertical
+  <ngx-charts-line-chart
     [scheme]="blueScheme"
-    [results]="chartData"
+    [results]="lineChartData"
     [gradient]="false"
     [xAxis]="true"
     [yAxis]="true"
@@ -23,7 +17,14 @@
     [showYAxisLabel]="true"
     [xAxisLabel]="xAxisLabel"
     [yAxisLabel]="yAxisLabel">
-   </ngx-charts-bar-vertical>
+   </ngx-charts-line-chart>
   </div>
 </mat-card>
+
+  <ngx-charts-number-card
+    [scheme]="blueScheme"
+    [results]="numberChartData">
+  </ngx-charts-number-card>
+
+
 </div>

@@ -9,18 +9,11 @@ import * as moment from 'moment';
 })
 export class BoardingChartComponent implements OnInit {
 
-  chartData: any[];
+  lineChartData: any[];
+  numberChartData: any[];
 
   blueScheme: any = {
     domain: ['#0D47A1', '#1976D2', '#039BE5', '#29B6F6', '#81D4FA', '#B2EBF2'],
-  };
-
-  orangeScheme: any = {
-    domain: ['#BF360C', '#EF6C00', '#FB8C00', '#FFB300', '#FFCA28', '#FFF176'],
-  };
-
-  blueOrangeScheme: any = {
-    domain: ['#0D47A1', '#01579B', '#1976D2', '#039BE5', '#00BCD4', '#FB8C00', '#FFA726', '#FFCC80', '#FFECB3'],
   };
 
   // options
@@ -29,10 +22,28 @@ export class BoardingChartComponent implements OnInit {
 
   constructor(private scheduleService: ScheduleService) {
 
+
+
     this.scheduleService.scheduleData.subscribe(data => {
-      var result = [];
+      this.buildLineChartData(data);
+      this.buildNumberChartData(data);
+    });
+
+  }
+
+  ngOnInit() {
+
+  }
+
+
+  buildLineChartData(schedules){
+    var grouped = this.groupBy(schedules, 'companyName');
+    var result = [];
+    Object.keys(grouped).forEach(data => {
       var allMonthsInPeriod = [];
-      data.forEach(boardingDate => {
+      var series = [];
+      var boardingDates = grouped[data];
+      boardingDates.forEach(boardingDate => {
         moment.locale('pt-br');
         var startDate = moment(boardingDate['start']);
         var endDate = moment(boardingDate['end']);
@@ -42,34 +53,61 @@ export class BoardingChartComponent implements OnInit {
         }
       });
 
-      for(var i= 0; i < allMonthsInPeriod.length; i++){
+      for (var i = 0; i < allMonthsInPeriod.length; i++) {
         var month = allMonthsInPeriod[i];
         var count = 1;
         var index = -1;
-        for(var j = 0; j < result.length; j++) {
-          var item = result[j];
+        for (var j = 0; j < series.length; j++) {
+          var item = series[j];
           if (item.hasOwnProperty('name') && item.name === month) {
-             count += item.value;
-             index = j;
-             break;
+            count += item.value;
+            index = j;
+            break;
           }
         }
-        if(index != -1){
-          result[j] = new Object(
-            {name: month, value: count }
+        if (index != -1) {
+          series[j] = new Object(
+            {name: month, value: count}
           );
-        }else{
-          result.push(new Object(
-            {name: month, value: count }
+        } else {
+          series.push(new Object(
+            {name: month, value: count}
           ));
         }
       }
-      this.chartData = result;
+      result.push(new Object({name: data, series: series}));
+
     });
-
+    this.lineChartData = result;
   }
 
-  ngOnInit() {
+  buildNumberChartData(schedules){
+
+    var result = [];
+
+    var totalEmployee = 0;
+    var groupedEmployee = this.groupBy(schedules, 'employeeId');
+    Object.keys(groupedEmployee).forEach(data => {
+      totalEmployee +=  groupedEmployee[data].length;
+    });
+    result.push(new Object({name: "Funcionários", value: totalEmployee}));
+
+    var groupedCompany = this.groupBy(schedules, 'companyName');
+    result.push(new Object({name: "Empresas", value:  Object.keys(groupedCompany).length}));
+
+    this.numberChartData = result;
+}
+
+  groupBy (array, prop){
+    return array.reduce(function(groups, item) {
+      var val = item[prop];
+      groups[val] = groups[val] || [];
+      groups[val].push(item);
+      return groups;
+    }, {});
   }
+
 
 }
+
+
