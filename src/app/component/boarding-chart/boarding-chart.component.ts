@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ScheduleService} from '../../service/schedule.service';
-import {EmployeeService} from '../../service/employee.service';
 import * as moment from 'moment';
 
 @Component({
@@ -21,14 +20,11 @@ export class BoardingChartComponent implements OnInit {
   xAxisLabel = 'Período';
   yAxisLabel = 'Funcionários';
 
-  constructor(private scheduleService: ScheduleService, private employeeService: EmployeeService) {
+  constructor(private scheduleService: ScheduleService) {
 
     this.scheduleService.scheduleData.subscribe(data => {
       this.buildLineChartData(data);
-    });
-
-    this.employeeService.employees.subscribe(data => {
-       this.buildNumberChartData(data);
+      this.buildNumberChartData(data);
     });
 
   }
@@ -88,13 +84,13 @@ export class BoardingChartComponent implements OnInit {
     var result = [];
 
     var totalEmployee = 0;
-    var groupedEmployee = this.groupBy(schedules, 'id');
+    var groupedEmployee = this.groupBy(schedules, 'employeeId');
     Object.keys(groupedEmployee).forEach(data => {
       totalEmployee +=  groupedEmployee[data].length;
     });
     result.push(new Object({name: "Funcionários", value: totalEmployee}));
 
-    var groupedCompany = this.groupBy(schedules, 'company');
+    var groupedCompany = this.groupBy(schedules, 'companyName');
     result.push(new Object({name: "Empresas", value:  Object.keys(groupedCompany).length}));
 
     this.numberChartData = result;
